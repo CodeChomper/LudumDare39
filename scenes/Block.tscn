@@ -7,7 +7,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Block" type="Sprite"]
+[node name="Block" type="Sprite" groups=[
+"level",
+]]
 
 texture = ExtResource( 1 )
 

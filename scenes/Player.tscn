@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+extents = Vector2( 20.9844, 52.6567 )
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -21,18 +21,18 @@ script/script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/scale = Vector2( 0.635607, 1.65006 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-visibility/visible = false
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="FloorRayL" type="RayCast2D" parent="."]
 
-transform/pos = Vector2( -32, 32 )
+transform/pos = Vector2( -20.0025, 52.6885 )
 enabled = true
 cast_to = Vector2( 0, 2 )
 layer_mask = 1
@@ -40,7 +40,7 @@ type_mask = 15
 
 [node name="FloorRayR" type="RayCast2D" parent="."]
 
-transform/pos = Vector2( 32, 32 )
+transform/pos = Vector2( 19.6246, 52.5941 )
 enabled = true
 cast_to = Vector2( 0, 2 )
 layer_mask = 1
@@ -48,9 +48,10 @@ type_mask = 15
 
 [node name="Gun" type="Sprite" parent="."]
 
-transform/pos = Vector2( 32.8544, -19.8791 )
-transform/scale = Vector2( 0.281548, 0.152717 )
+transform/pos = Vector2( 32.1206, -11.1437 )
+transform/scale = Vector2( 0.491158, 0.152717 )
 texture = ExtResource( 2 )
+modulate = Color( 0, 0, 0, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

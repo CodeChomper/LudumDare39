@@ -37,7 +37,6 @@ func _fixed_process(delta):
 	
 func movement(delta):
 	vel = main.gravity(vel,delta)
-	#
 	vel.x *= DRAG
 	
 	if left and not right:
