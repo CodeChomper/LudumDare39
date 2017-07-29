@@ -6,12 +6,13 @@ onready var bulletSpawn = get_node("BulletSpawn")
 onready var shotCoolDown = get_node("ShotCoolDown")
 onready var bull = preload('res://scenes/Bullet.tscn')
 onready var anim = get_node("AnimatedSprite")
+onready var muzzelFlash = get_node("BulletSpawn/MuzzelFlash")
 
 var DRAG = 0.92
 var GUN_KICK = 200
 
 var walkSpeed = 20.0
-var jumpSpeed = 400
+var jumpSpeed = 175
 var vel = Vector2(0,0)
 var onGround = false
 var state = "idle"  # idle run dead
@@ -37,13 +38,17 @@ func _fixed_process(delta):
 	right = Input.is_action_pressed("player_right")
 	shoot = Input.is_action_pressed("player_shoot")
 	
-	onGround = floorRayL.is_colliding() or floorRayR.is_colliding()
+	onGround = (floorRayL.is_colliding() or floorRayR.is_colliding()) 
+	if not onGround and vel.y <= 0:
+		state = "jumpUp"
+	if not onGround and vel.y > 0:
+		state = "jumpDown"
 	
 	if shoot and canShoot and onGround:
 		shoot()
 	
-	#if onGround and abs(vel.x) < 3:
-	#	state = 'idle'
+	if onGround and abs(vel.x) < 3:
+		state = 'idle'
 	
 	# handle movement
 	movement(delta)
@@ -56,17 +61,19 @@ func movement(delta):
 	vel = main.gravity(vel,delta)
 	vel.x *= DRAG
 	
-	if left and not right:
+	if left and not right and state != "shoot":
 		main.flip(self,true)
 		facingRight = false
 		vel.x -= walkSpeed
-		state = "run"
+		if onGround:
+			state = "run"
 	
-	if right and not left:
+	if right and not left and state != "shoot":
 		main.flip(self,false)
 		facingRight = true
 		vel.x += walkSpeed
-		state = "run"
+		if onGround:
+			state = "run"
 	
 	if onGround and up:
 		vel.y -= jumpSpeed
@@ -86,6 +93,8 @@ func _on_ShotCoolDown_timeout():
 		state = 'idle'
 
 func shoot():
+	muzzelFlash.set_frame(0)
+	muzzelFlash.play("shoot")
 	state = "shoot"
 	var b = bull.instance()
 	if facingRight:
@@ -98,3 +107,8 @@ func shoot():
 	b.set_global_pos(bulletSpawn.get_global_pos())
 	canShoot = false
 	shotCoolDown.start()
+
+func _on_MuzzelFlash_finished():
+	muzzelFlash.play("default")
+	
+	pass # replace with function body

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6.03497, 6.08355 )
+extents = Vector2( 3.82915, 4.04732 )
 
 [node name="Bullet" type="KinematicBody2D"]
 
@@ -22,7 +22,6 @@ dir = "right"
 
 [node name="Bullet" type="Sprite" parent="."]
 
-transform/scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

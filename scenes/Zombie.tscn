@@ -1,22 +1,36 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/Zombie.gd" type="Script" id=1]
-[ext_resource path="res://imgs/Zombie.png" type="Texture" id=2]
+[ext_resource path="res://imgs/Zombie_1.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 23.4503, 59.4198 )
+extents = Vector2( 17.3262, 43.8452 )
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 1.92761, 58.3547 )
+extents = Vector2( 1.92761, 41.7603 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 34.437, -44.789, 307.766, -137.004, 346.908, -106.487, 359.513, -56.7305, 356.859, -8.30084, 348.235, 28.8507, 325.015, 52.7339, 33.7735, -34.1742 )
+points = Vector2Array( 30.3448, -54.231, 268.818, -106.9, 292.226, -84.9545, 304.418, -43.9898, 297.591, -10.8279, 280.034, 16.9696, 261.015, 29.1615, 30.3448, -41.5514 )
 
 [node name="Zombie" type="KinematicBody2D" groups=[
 "badGuys",
@@ -24,27 +38,28 @@ points = Vector2Array( 34.437, -44.789, 307.766, -137.004, 346.908, -106.487, 35
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.387424, 3.29309 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
-[node name="ZombieSprite" type="Sprite" parent="."]
+[node name="ZombieSprite" type="AnimatedSprite" parent="."]
 
-transform/scale = Vector2( 0.706745, 1.88481 )
-texture = ExtResource( 2 )
+frames = SubResource( 4 )
+animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+transform/pos = Vector2( -0.387424, 3.29309 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="FloorRayL" type="RayCast2D" parent="."]
 
-transform/pos = Vector2( -21.9454, 59.0087 )
+transform/pos = Vector2( -17.0624, 48.1956 )
 enabled = true
 cast_to = Vector2( 0, 3 )
 layer_mask = 1
@@ -52,7 +67,7 @@ type_mask = 15
 
 [node name="FloorRayR" type="RayCast2D" parent="."]
 
-transform/pos = Vector2( 21.4577, 59.0087 )
+transform/pos = Vector2( 15.7999, 48.4591 )
 enabled = true
 cast_to = Vector2( 0, 3 )
 layer_mask = 1
@@ -67,11 +82,10 @@ autostart = false
 
 [node name="FrontCollision" type="Area2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 0.875961, 0 )
+transform/pos = Vector2( -4.734, 2.4926 )
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 26.0885, -0.263515 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 24.7709, 0.790564 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -80,26 +94,14 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontCollision"]
 
-transform/pos = Vector2( 26.0885, -0.263515 )
+transform/pos = Vector2( 24.7709, 0.790564 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
-[node name="ZombieArmSprite" type="Sprite" parent="."]
-
-transform/pos = Vector2( 37.9728, -24.2858 )
-transform/scale = Vector2( 0.693523, 0.162365 )
-texture = ExtResource( 2 )
-
-[node name="ZombieArmSprite1" type="Sprite" parent="."]
-
-transform/pos = Vector2( 37.1823, -11.1098 )
-transform/scale = Vector2( 0.693523, 0.162365 )
-texture = ExtResource( 2 )
-
 [node name="WalkForwardRay" type="RayCast2D" parent="."]
 
-transform/pos = Vector2( 21.8722, 52.4405 )
+transform/pos = Vector2( 14.4081, 43.0689 )
 enabled = true
 cast_to = Vector2( 10, 10 )
 layer_mask = 1
@@ -107,7 +109,7 @@ type_mask = 15
 
 [node name="VisionCone" type="Area2D" parent="."]
 
-editor/display_folded = true
+transform/pos = Vector2( -3.9528, 20.8181 )
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -120,7 +122,7 @@ angular_damp = 1.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
 
 build_mode = 0
-polygon = Vector2Array( 34.437, -44.789, 307.766, -137.004, 346.908, -106.487, 359.513, -56.7305, 356.859, -8.30084, 348.235, 28.8507, 325.015, 52.7339, 33.7735, -34.1742 )
+polygon = Vector2Array( 30.3448, -54.231, 268.818, -106.9, 292.226, -84.9545, 304.418, -43.9898, 297.591, -10.8279, 280.034, 16.9696, 261.015, 29.1615, 30.3448, -41.5514 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
