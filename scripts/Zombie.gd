@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends 'res://scripts/BadGuy.gd'
 
 onready var floorRayL = get_node("FloorRayL")
 onready var floorRayR = get_node("FloorRayR")
@@ -7,9 +7,7 @@ onready var walkForwardRay = get_node("WalkForwardRay")
 onready var attackCooldown = get_node("AttackCooldown")
 
 var DRAG = 0.92
-
 var walkSpeed = 15.0
-var state = "idle"
 var onGround = false
 var facingRight = true
 var vel = Vector2(0,0)
@@ -80,8 +78,6 @@ func _on_VisionCone_body_enter( body ):
 func _on_VisionCone_body_exit( body ):
 	if body.get_name() == 'Player':
 		attackCooldown.start()
-
-
 
 func _on_AttackCooldown_timeout():
 	state = "idle"

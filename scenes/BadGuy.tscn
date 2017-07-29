@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scripts/BadGuy.gd" type="Script" id=1]
+
+[node name="BadGuy" type="Node2D" groups=[
+"badGuys",
+]]
+
+script/script = ExtResource( 1 )
+
+

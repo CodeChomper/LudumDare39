@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://tiles/LevelTiles.tres" type="TileSet" id=1]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Zombie.tscn" type="PackedScene" id=4]
 
 [node name="Level1" type="Node"]
@@ -11,7 +11,7 @@
 "level",
 ]]
 
-transform/pos = Vector2( -275.58, 0 )
+transform/pos = Vector2( -491.88, -13.6038 )
 mode = 0
 tile_set = ExtResource( 1 )
 cell/size = Vector2( 64, 64 )
@@ -26,24 +26,20 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 327714, 0, 327715, 0, 327716, 0, 327717, 0, 327718, 0, 327719, 0, 327720, 0, 327721, 0, 327722, 0, 327723, 0, 524288, 0, 524289, 0, 524290, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 524307, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0, 786462, 0, 786463, 0, 786464, 0, 786465, 0, 786466, 0, 786467, 0, 786468, 0, 786469, 0, 786470, 0, 786471, 0 )
+tile_data = IntArray( 327714, 0, 327715, 0, 327716, 0, 327717, 0, 327718, 0, 327719, 0, 327720, 0, 327721, 0, 327722, 0, 327723, 0, 327727, 0, 327728, 0, 327729, 0, 327730, 0, 327731, 0, 327732, 0, 327733, 0, 524288, 0, 524289, 0, 524290, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 524307, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0 )
 
-[node name="Player" parent="TileMap" instance=ExtResource( 2 )]
+[node name="Block" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 1083.55, 448.55 )
-
-[node name="Block" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 1661.71, 453.909 )
+transform/pos = Vector2( 1445.3, 440.325 )
 transform/rot = 22.5607
 transform/scale = Vector2( 8.5, 1 )
 
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1136.93, 436.797 )
+
 [node name="Zombie" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 67.6945, 439.851 )
-
-[node name="Zombie1" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( -234.491, 448.939 )
+transform/pos = Vector2( 680.385, 431.29 )
 
 
