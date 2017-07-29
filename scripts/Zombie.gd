@@ -4,6 +4,7 @@ onready var floorRayL = get_node("FloorRayL")
 onready var floorRayR = get_node("FloorRayR")
 onready var idleTimer = get_node("IdleTimer")
 onready var walkForwardRay = get_node("WalkForwardRay")
+onready var attackCooldown = get_node("AttackCooldown")
 
 var DRAG = 0.92
 
@@ -28,7 +29,7 @@ func _fixed_process(delta):
 	onGround = floorRayL.is_colliding() or floorRayR.is_colliding()
 	
 	#turn around of no floor infront of you
-	if not walkForwardRay.is_colliding():
+	if not state == 'attack' and not walkForwardRay.is_colliding():
 		_turn_around()
 	
 	#handle movement via states
@@ -37,6 +38,13 @@ func _fixed_process(delta):
 			vel.x += walkSpeed
 		else:
 			vel.x -= walkSpeed
+	
+	#attack mode
+	if state == 'attack':
+		if facingRight:
+			vel.x += walkSpeed * 1.5
+		else:
+			vel.x -= walkSpeed * 1.5
 
 	var motion = vel * delta
 	move(motion)
@@ -52,12 +60,29 @@ func _on_idle_timer_time_out():
 	state = "run"
 
 func _on_FrontCollision_body_enter( b ):
-	if b.is_in_group("level"):
+	if b.is_in_group("level") or (b.is_in_group("badGuys") and b != self):
 		_turn_around()
 
 func _turn_around():
 	main.flip(self,facingRight)
 	facingRight = !facingRight
 	vel.x = 0
+	state = "idle"
+	idleTimer.start()
+
+
+func _on_VisionCone_body_enter( body ):
+	# Lets see if zombie fights are cool if not check for player
+	if body.get_name() == 'Player':
+		state = 'attack'
+
+
+func _on_VisionCone_body_exit( body ):
+	if body.get_name() == 'Player':
+		attackCooldown.start()
+
+
+
+func _on_AttackCooldown_timeout():
 	state = "idle"
 	idleTimer.start()

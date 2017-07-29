@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scripts/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://imgs/Zombie.png" type="Texture" id=2]
@@ -13,7 +13,14 @@ extents = Vector2( 23.4503, 59.4198 )
 custom_solver_bias = 0.0
 extents = Vector2( 1.92761, 58.3547 )
 
-[node name="Zombie" type="KinematicBody2D"]
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 34.437, -44.789, 307.766, -137.004, 346.908, -106.487, 359.513, -56.7305, 356.859, -8.30084, 348.235, 28.8507, 325.015, 52.7339, 33.7735, -34.1742 )
+
+[node name="Zombie" type="KinematicBody2D" groups=[
+"badGuys",
+]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -60,6 +67,7 @@ autostart = false
 
 [node name="FrontCollision" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 0.875961, 0 )
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
@@ -97,8 +105,40 @@ cast_to = Vector2( 10, 10 )
 layer_mask = 1
 type_mask = 15
 
+[node name="VisionCone" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
+
+build_mode = 0
+polygon = Vector2Array( 34.437, -44.789, 307.766, -137.004, 346.908, -106.487, 359.513, -56.7305, 356.859, -8.30084, 348.235, 28.8507, 325.015, 52.7339, 33.7735, -34.1742 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_time_out"]
 
 [connection signal="body_enter" from="FrontCollision" to="." method="_on_FrontCollision_body_enter"]
+
+[connection signal="body_enter" from="VisionCone" to="." method="_on_VisionCone_body_enter"]
+
+[connection signal="body_exit" from="VisionCone" to="." method="_on_VisionCone_body_exit"]
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
 
 
