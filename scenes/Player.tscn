@@ -82,12 +82,11 @@ script/script = ExtResource( 1 )
 
 [node name="BulletSpawn" type="Node2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 19.9662, -16.4306 )
+transform/pos = Vector2( -1.05699, -14.9707 )
 
 [node name="MuzzelFlash" type="AnimatedSprite" parent="BulletSpawn"]
 
-transform/pos = Vector2( 12.7376, -2.10377 )
+transform/pos = Vector2( 34.6368, -4.73167 )
 frames = SubResource( 2 )
 animation = "default"
 
@@ -140,7 +139,7 @@ autostart = false
 
 frames = SubResource( 3 )
 animation = "shoot"
-frame = 3
+frame = 1
 playing = true
 __meta__ = {
 "_edit_lock_": true

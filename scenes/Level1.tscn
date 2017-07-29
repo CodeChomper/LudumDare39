@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://tiles/LevelTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ZombieSpawn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/PowerStationDropoff.tscn" type="PackedScene" id=5]
 
 [node name="Level1" type="Node"]
 
@@ -26,7 +27,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 327714, 0, 327715, 0, 327716, 0, 327717, 0, 327718, 0, 327719, 0, 327720, 0, 327721, 0, 327722, 0, 327723, 0, 327727, 0, 327728, 0, 327729, 0, 327730, 0, 327731, 0, 327732, 0, 327733, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0 )
+tile_data = IntArray( 327714, 0, 327715, 0, 327716, 0, 327717, 0, 327718, 0, 327719, 0, 327720, 0, 327721, 0, 327722, 0, 327723, 0, 327727, 0, 327728, 0, 327729, 0, 327730, 0, 327731, 0, 327732, 0, 327733, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 524307, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0 )
 
 [node name="Block" parent="." instance=ExtResource( 2 )]
 
@@ -45,5 +46,9 @@ transform/pos = Vector2( 844.318, 442.362 )
 [node name="ZombieSpawn 2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2714.25, 250.574 )
+
+[node name="PowerStationDropoff" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 331.424, 450.534 )
 
 

@@ -70,7 +70,7 @@ func _on_idle_timer_time_out():
 		state = "run"
 
 func _on_FrontCollision_body_enter( b ):
-	if b.is_in_group("level") or (b.is_in_group("badGuys") and b != self and state != 'dead'):
+	if (b.is_in_group("level") or (b.is_in_group("badGuys")) and b != self and state != 'dead'):
 		_turn_around()
 
 func _turn_around():
