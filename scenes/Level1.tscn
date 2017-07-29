@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://tiles/LevelTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Zombie.tscn" type="PackedScene" id=4]
 
 [node name="Level1" type="Node"]
 
@@ -37,9 +36,5 @@ transform/scale = Vector2( 8.5, 1 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1136.93, 436.797 )
-
-[node name="Zombie" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 680.385, 431.29 )
 
 

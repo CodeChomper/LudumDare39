@@ -5,8 +5,10 @@ onready var floorRayR = get_node("FloorRayR")
 onready var bulletSpawn = get_node("BulletSpawn")
 onready var shotCoolDown = get_node("ShotCoolDown")
 onready var bull = preload('res://scenes/Bullet.tscn')
+onready var anim = get_node("AnimatedSprite")
 
 var DRAG = 0.92
+var GUN_KICK = 200
 
 var walkSpeed = 20.0
 var jumpSpeed = 400
@@ -28,6 +30,7 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
+	updateAnimations()
 	up = Input.is_action_pressed("player_up")
 	down = Input.is_action_pressed("player_down")
 	left = Input.is_action_pressed("player_left")
@@ -36,23 +39,19 @@ func _fixed_process(delta):
 	
 	onGround = floorRayL.is_colliding() or floorRayR.is_colliding()
 	
-	if shoot and canShoot:
-		var b = bull.instance()
-		if facingRight:
-			b.dir = "right"
-		else:
-			b.dir = "left"
-		get_parent().add_child(b)
-		b.set_global_pos(bulletSpawn.get_global_pos())
-		canShoot = false
-		shotCoolDown.start()
+	if shoot and canShoot and onGround:
+		shoot()
 	
-	if onGround and abs(vel.x) < 3:
-		state = 'idle'
+	#if onGround and abs(vel.x) < 3:
+	#	state = 'idle'
 	
 	# handle movement
 	movement(delta)
-	
+
+
+func updateAnimations():
+	anim.play(state)
+
 func movement(delta):
 	vel = main.gravity(vel,delta)
 	vel.x *= DRAG
@@ -83,3 +82,19 @@ func movement(delta):
 
 func _on_ShotCoolDown_timeout():
 	canShoot = true
+	if not Input.is_action_pressed("player_shoot"):
+		state = 'idle'
+
+func shoot():
+	state = "shoot"
+	var b = bull.instance()
+	if facingRight:
+		b.dir = "right"
+		vel.x -= GUN_KICK
+	else:
+		b.dir = "left"
+		vel.x += GUN_KICK
+	get_parent().add_child(b)
+	b.set_global_pos(bulletSpawn.get_global_pos())
+	canShoot = false
+	shotCoolDown.start()
