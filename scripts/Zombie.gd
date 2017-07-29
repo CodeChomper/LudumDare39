@@ -6,6 +6,8 @@ onready var idleTimer = get_node("IdleTimer")
 onready var walkForwardRay = get_node("WalkForwardRay")
 onready var attackCooldown = get_node("AttackCooldown")
 onready var guts = preload("res://scenes/ZombieGuts.tscn")
+onready var anim = get_node("AnimatedSprite")
+onready var decayTimer = get_node("DecayTimer")
 
 var DRAG = 0.92
 var walkSpeed = 15.0
@@ -24,6 +26,10 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
+	if get_pos().y > 10000:
+		print('fell to my death')
+		queue_free()
+	anim.play(state)
 	if state == 'dead':
 		return
 
@@ -45,9 +51,9 @@ func _fixed_process(delta):
 	#attack mode
 	if state == 'attack':
 		if facingRight:
-			vel.x += walkSpeed * 1.5
+			vel.x += walkSpeed * 1.2
 		else:
-			vel.x -= walkSpeed * 1.5
+			vel.x -= walkSpeed * 1.2
 
 	var motion = vel * delta
 	move(motion)
@@ -91,6 +97,7 @@ func _on_AttackCooldown_timeout():
 		idleTimer.start()
 	
 func _on_dead():
+	decayTimer.start()
 	clear_shapes()
 	for i in range(0,rand_range(2,6)):
 		var g = guts.instance()
@@ -99,3 +106,8 @@ func _on_dead():
 		self.get_parent().add_child(g)
 	
 	print("i am dead")
+
+func _on_DecayTimer_timeout():
+	print("decay")
+	queue_free()
+	pass # replace with function body

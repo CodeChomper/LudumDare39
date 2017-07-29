@@ -1,8 +1,17 @@
 extends Node
 var GRAVITY = 500
+var backpack = 0
+var MAX_BACKPACK = 2
 
 func _ready():
 	pass
+
+func pick_up_guts():
+	if backpack < MAX_BACKPACK:
+		backpack += 1
+		return true
+	else:
+		return false
 
 func gravity(vel,delta):
 	vel.y += GRAVITY * delta
