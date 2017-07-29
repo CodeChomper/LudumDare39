@@ -4,6 +4,7 @@ var backpack = 0
 var MAX_BACKPACK = 2
 
 func _ready():
+	randomize()
 	pass
 
 func pick_up_guts():

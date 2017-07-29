@@ -147,7 +147,7 @@ animation = "idle"
 [node name="DecayTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 4.0
 one_shot = true
 autostart = false
 
