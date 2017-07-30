@@ -95,14 +95,13 @@ animation = "default"
 [node name="MuzzelFlashLight" type="Light2D" parent="BulletSpawn/MuzzelFlash"]
 
 visibility/visible = false
-visibility/light_mask = 1024
 enabled = true
 editor_only = false
 texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 scale = 2.0
 color = Color( 0.957031, 0.522792, 0.0149536, 1 )
-energy = 2.0
+energy = 4.0
 mode = 0
 range/height = 0.0
 range/z_min = -1024

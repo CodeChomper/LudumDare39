@@ -12,6 +12,8 @@ flicker = null
 
 [node name="Light2D" type="Light2D" parent="."]
 
+transform/pos = Vector2( 0, 6.21329 )
+transform/scale = Vector2( 1, 1.05178 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )

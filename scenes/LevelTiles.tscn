@@ -1,15 +1,27 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://imgs/Block.png" type="Texture" id=1]
 [ext_resource path="res://imgs/tiles/LevelTiles_2.png" type="Texture" id=2]
 [ext_resource path="res://imgs/tiles/LevelTiles_1.png" type="Texture" id=3]
 [ext_resource path="res://imgs/tiles/LevelTiles_0.png" type="Texture" id=4]
 [ext_resource path="res://imgs/tiles/LevelTiles_3.png" type="Texture" id=5]
+[ext_resource path="res://imgs/tiles/LevelTiles_6.png" type="Texture" id=6]
+[ext_resource path="res://imgs/tiles/LevelTiles_11.png" type="Texture" id=7]
+[ext_resource path="res://imgs/tiles/LevelTiles_12.png" type="Texture" id=8]
+[ext_resource path="res://imgs/tiles/LevelTiles_13.png" type="Texture" id=9]
+[ext_resource path="res://imgs/tiles/LevelTiles_14.png" type="Texture" id=10]
+[ext_resource path="res://imgs/tiles/LevelTiles_10.png" type="Texture" id=11]
+[ext_resource path="res://imgs/tiles/LevelTiles_08.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16.5303 )
 
 [node name="LevelTiles" type="Node"]
 
@@ -41,28 +53,96 @@ _update_shape_index = 0
 
 [node name="WallCap" type="Sprite" parent="."]
 
-transform/pos = Vector2( 96, 96 )
+transform/pos = Vector2( 128, 0 )
 texture = ExtResource( 2 )
 
 [node name="WallLeft1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 64, 128 )
+transform/pos = Vector2( 96, 32 )
 texture = ExtResource( 3 )
 
-[node name="Brick" type="Sprite" parent="."]
+[node name="Street" type="Sprite" parent="."]
 
-transform/pos = Vector2( 96, 128 )
+transform/pos = Vector2( 192, 0 )
 texture = ExtResource( 4 )
 
 [node name="WallCorner" type="Sprite" parent="."]
 
-transform/pos = Vector2( 64, 96 )
+transform/pos = Vector2( 96, 0 )
 texture = ExtResource( 5 )
 
-[node name="Street" type="Sprite" parent="."]
+[node name="Brick" type="Sprite" parent="."]
 
-transform/pos = Vector2( 128, 0 )
-texture = ExtResource( 1 )
-modulate = Color( 0.171875, 0.171882, 0.171875, 1 )
+transform/pos = Vector2( 128, 32 )
+texture = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 64 )
+texture = ExtResource( 7 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 32, 64 )
+texture = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 64, 64 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 96, 64 )
+texture = ExtResource( 10 )
+
+[node name="Sidwalk1" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 288, 0 )
+texture = ExtResource( 11 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sidwalk1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sidwalk1/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sidwalk2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 336, 0 )
+texture = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sidwalk2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sidwalk2/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
 
 
