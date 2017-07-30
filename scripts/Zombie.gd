@@ -12,7 +12,7 @@ onready var eye1 = get_node("Light2D")
 onready var eye2 = get_node("Light2D1")
 
 var DRAG = 0.92
-var walkSpeed = 15.0
+var walkSpeed = 8.0
 var onGround = false
 var facingRight = true
 var vel = Vector2(0,0)
@@ -53,9 +53,9 @@ func _fixed_process(delta):
 	#attack mode
 	if state == 'attack':
 		if facingRight:
-			vel.x += walkSpeed * 1.2
+			vel.x += walkSpeed * 1.8
 		else:
-			vel.x -= walkSpeed * 1.2
+			vel.x -= walkSpeed * 1.8
 
 	var motion = vel * delta
 	move(motion)

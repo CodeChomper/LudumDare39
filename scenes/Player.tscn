@@ -11,17 +11,17 @@
 [ext_resource path="res://imgs/lightMask.png" type="Texture" id=9]
 [ext_resource path="res://imgs/PlayerIdle_0.png" type="Texture" id=10]
 [ext_resource path="res://imgs/PlayerIdle_1.png" type="Texture" id=11]
-[ext_resource path="res://imgs/PlayerRun_0.png" type="Texture" id=12]
-[ext_resource path="res://imgs/PlayerRun_1.png" type="Texture" id=13]
-[ext_resource path="res://imgs/PlayerRun_2.png" type="Texture" id=14]
-[ext_resource path="res://imgs/PlayerRun_3.png" type="Texture" id=15]
-[ext_resource path="res://imgs/PlayerRun_4.png" type="Texture" id=16]
-[ext_resource path="res://imgs/PlayerRun_5.png" type="Texture" id=17]
-[ext_resource path="res://imgs/PlayerShoot_0.png" type="Texture" id=18]
-[ext_resource path="res://imgs/PlayerShoot_1.png" type="Texture" id=19]
-[ext_resource path="res://imgs/PlayerShoot_2.png" type="Texture" id=20]
-[ext_resource path="res://imgs/PlayerJump_0.png" type="Texture" id=21]
-[ext_resource path="res://imgs/PlayerJump_1.png" type="Texture" id=22]
+[ext_resource path="res://imgs/PlayerJump_0.png" type="Texture" id=12]
+[ext_resource path="res://imgs/PlayerJump_1.png" type="Texture" id=13]
+[ext_resource path="res://imgs/PlayerRun_0.png" type="Texture" id=14]
+[ext_resource path="res://imgs/PlayerRun_1.png" type="Texture" id=15]
+[ext_resource path="res://imgs/PlayerRun_2.png" type="Texture" id=16]
+[ext_resource path="res://imgs/PlayerRun_3.png" type="Texture" id=17]
+[ext_resource path="res://imgs/PlayerRun_4.png" type="Texture" id=18]
+[ext_resource path="res://imgs/PlayerRun_5.png" type="Texture" id=19]
+[ext_resource path="res://imgs/PlayerShoot_0.png" type="Texture" id=20]
+[ext_resource path="res://imgs/PlayerShoot_1.png" type="Texture" id=21]
+[ext_resource path="res://imgs/PlayerShoot_2.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -50,25 +50,25 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "run",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "shoot",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 21 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "jumpUp",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "jumpDown",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "run",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 10.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -94,13 +94,15 @@ animation = "default"
 
 [node name="MuzzelFlashLight" type="Light2D" parent="BulletSpawn/MuzzelFlash"]
 
+visibility/visible = false
+visibility/light_mask = 1024
 enabled = true
 editor_only = false
 texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 scale = 2.0
 color = Color( 0.957031, 0.522792, 0.0149536, 1 )
-energy = 1.0
+energy = 2.0
 mode = 0
 range/height = 0.0
 range/z_min = -1024
@@ -185,7 +187,7 @@ autostart = false
 
 frames = SubResource( 3 )
 animation = "shoot"
-frame = 1
+frame = 3
 playing = true
 __meta__ = {
 "_edit_lock_": true

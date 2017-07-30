@@ -35,7 +35,7 @@ func _ready():
 func _fixed_process(delta):
 	var lightPower = 0.0
 	if(main.power > 11):
-		lightPower = 100 * (0.5/main.power)
+		lightPower = 100 * (0.5/main.power) + 1
 	else:
 		lightPower = 4.0
 	
