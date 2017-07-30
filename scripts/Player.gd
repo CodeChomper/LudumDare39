@@ -8,6 +8,7 @@ onready var bull = preload('res://scenes/Bullet.tscn')
 onready var anim = get_node("AnimatedSprite")
 onready var muzzelFlash = get_node("BulletSpawn/MuzzelFlash")
 onready var light = get_node("Camera2D/Light2D")
+onready var muzzelFlashLight = get_node("BulletSpawn/MuzzelFlash/MuzzelFlashLight")
 
 var DRAG = 0.92
 var GUN_KICK = 200
@@ -101,6 +102,7 @@ func _on_ShotCoolDown_timeout():
 		state = 'idle'
 
 func shoot():
+	muzzelFlashLight.set_hidden(false)
 	muzzelFlash.set_frame(0)
 	muzzelFlash.play("shoot")
 	state = "shoot"
@@ -118,5 +120,6 @@ func shoot():
 
 func _on_MuzzelFlash_finished():
 	muzzelFlash.play("default")
+	muzzelFlashLight.set_hidden(true)
 	
 	pass # replace with function body

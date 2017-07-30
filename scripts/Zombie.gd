@@ -8,6 +8,8 @@ onready var attackCooldown = get_node("AttackCooldown")
 onready var guts = preload("res://scenes/ZombieGuts.tscn")
 onready var anim = get_node("AnimatedSprite")
 onready var decayTimer = get_node("DecayTimer")
+onready var eye1 = get_node("Light2D")
+onready var eye2 = get_node("Light2D1")
 
 var DRAG = 0.92
 var walkSpeed = 15.0
@@ -97,6 +99,8 @@ func _on_AttackCooldown_timeout():
 		idleTimer.start()
 	
 func _on_dead():
+	eye1.set_hidden(true)
+	eye2.set_hidden(true)
 	decayTimer.start()
 	clear_shapes()
 	for i in range(0,rand_range(2,6)):
