@@ -33,13 +33,8 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
-	var lightPower = 0.0
-	if(main.power > 11):
-		lightPower = 100 * (0.5/main.power) + 1
-	else:
-		lightPower = 4.0
-	
-	light.set_energy(lightPower)
+	muzzelFlashLight.set_energy(main.getLightPower() * 10)
+	light.set_energy(main.getLightPower())
 	updateAnimations()
 	up = Input.is_action_pressed("player_up")
 	down = Input.is_action_pressed("player_down")

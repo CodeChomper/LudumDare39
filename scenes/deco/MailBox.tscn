@@ -11,14 +11,16 @@ radius = 14.8103
 
 texture = ExtResource( 1 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=[
+"props",
+]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 7.62939e-06, -16.4101 )
 shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 1024
+collision/mask = 1024
 one_way_collision/direction = Vector2( 0, 1 )
 one_way_collision/max_depth = 20.0
 constant_linear_velocity = Vector2( 0, 0 )

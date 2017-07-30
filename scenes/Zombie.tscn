@@ -4,14 +4,14 @@
 [ext_resource path="res://imgs/ZombieIdle_0.png" type="Texture" id=2]
 [ext_resource path="res://imgs/ZombieIdle_1.png" type="Texture" id=3]
 [ext_resource path="res://imgs/ZombieIdle_2.png" type="Texture" id=4]
-[ext_resource path="res://imgs/Zombie_2.png" type="Texture" id=5]
-[ext_resource path="res://imgs/ZombieWalk_0.png" type="Texture" id=6]
-[ext_resource path="res://imgs/ZombieWalk_1.png" type="Texture" id=7]
-[ext_resource path="res://imgs/ZombieWalk_2.png" type="Texture" id=8]
-[ext_resource path="res://imgs/ZombieWalk_3.png" type="Texture" id=9]
-[ext_resource path="res://imgs/ZombieWalk_4.png" type="Texture" id=10]
-[ext_resource path="res://imgs/ZombieWalk_5.png" type="Texture" id=11]
-[ext_resource path="res://imgs/ZombieWalk_6.png" type="Texture" id=12]
+[ext_resource path="res://imgs/ZombieWalk_0.png" type="Texture" id=5]
+[ext_resource path="res://imgs/ZombieWalk_1.png" type="Texture" id=6]
+[ext_resource path="res://imgs/ZombieWalk_2.png" type="Texture" id=7]
+[ext_resource path="res://imgs/ZombieWalk_3.png" type="Texture" id=8]
+[ext_resource path="res://imgs/ZombieWalk_4.png" type="Texture" id=9]
+[ext_resource path="res://imgs/ZombieWalk_5.png" type="Texture" id=10]
+[ext_resource path="res://imgs/ZombieWalk_6.png" type="Texture" id=11]
+[ext_resource path="res://imgs/Zombie_2.png" type="Texture" id=12]
 [ext_resource path="res://imgs/GlowingEyesMask.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -37,20 +37,20 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "dead",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "attack",
 "speed": 16.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "run",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
 } ]
 
 [node name="Zombie" type="KinematicBody2D" groups=[
@@ -153,7 +153,7 @@ autostart = false
 
 frames = SubResource( 4 )
 animation = "run"
-frame = 6
+frame = 4
 playing = true
 
 [node name="DecayTimer" type="Timer" parent="."]
@@ -167,14 +167,15 @@ autostart = false
 
 transform/pos = Vector2( 1.55918, -33.2814 )
 transform/scale = Vector2( 0.260416, 0.260416 )
+z/z = -1000
 enabled = true
 editor_only = false
 texture = ExtResource( 13 )
 offset = Vector2( 0, 0 )
 scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
+color = Color( 0.96875, 0.96875, 0.96875, 1 )
+energy = 50.0
+mode = 2
 range/height = 0.0
 range/z_min = -1024
 range/z_max = 1024
@@ -191,14 +192,15 @@ shadow/item_mask = 1
 
 transform/pos = Vector2( 6.2583, -33.5118 )
 transform/scale = Vector2( 0.260416, 0.260416 )
+z/z = -1000
 enabled = true
 editor_only = false
 texture = ExtResource( 13 )
 offset = Vector2( 0, 0 )
 scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
+color = Color( 0.96875, 0.96875, 0.96875, 1 )
+energy = 50.0
+mode = 2
 range/height = 0.0
 range/z_min = -1024
 range/z_max = 1024
