@@ -7,6 +7,7 @@ onready var shotCoolDown = get_node("ShotCoolDown")
 onready var bull = preload('res://scenes/Bullet.tscn')
 onready var anim = get_node("AnimatedSprite")
 onready var muzzelFlash = get_node("BulletSpawn/MuzzelFlash")
+onready var light = get_node("Camera2D/Light2D")
 
 var DRAG = 0.92
 var GUN_KICK = 200
@@ -31,6 +32,13 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
+	var lightPower = 0.0
+	if(main.power > 11):
+		lightPower = 100 * (0.5/main.power)
+	else:
+		lightPower = 4.0
+	
+	light.set_energy(lightPower)
 	updateAnimations()
 	up = Input.is_action_pressed("player_up")
 	down = Input.is_action_pressed("player_down")
