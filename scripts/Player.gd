@@ -30,6 +30,8 @@ var shoot = false
 var canShoot = true
 var facingRight = true
 var invincible = false
+var footStepsPlaying = false
+var footStepsSoundId = -1
 
 func _ready():
 	set_fixed_process(true)
@@ -47,6 +49,10 @@ func _fixed_process(delta):
 	right = Input.is_action_pressed("player_right")
 	shoot = Input.is_action_pressed("player_shoot")
 	
+	if state != "run" and footStepsPlaying:
+		footStepsPlaying = false
+		#sfx.stop_voice(footStepsSoundId)
+	
 	onGround = (floorRayL.is_colliding() or floorRayR.is_colliding()) 
 	if not onGround and vel.y <= 0:
 		state = "jumpUp"
@@ -59,7 +65,7 @@ func _fixed_process(delta):
 	if shoot and canShoot and onGround:
 		shoot()
 	
-	if onGround and abs(vel.x) < 3:
+	if onGround and abs(vel.x) < 40:
 		state = 'idle'
 	
 	# handle movement
@@ -89,6 +95,9 @@ func movement(delta):
 		vel.x -= walkSpeed
 		if onGround:
 			state = "run"
+			if not footStepsPlaying:
+				footStepsPlaying = true
+				#footStepsSoundId = sfx.play("FootSteps")
 	
 	if right and not left and state != "shoot":
 		main.flip(self,false)
@@ -96,6 +105,9 @@ func movement(delta):
 		vel.x += walkSpeed
 		if onGround:
 			state = "run"
+			if not footStepsPlaying:
+				footStepsPlaying = true
+				#SfootStepsSoundId = sfx.play("FootSteps")
 	
 	if onGround and up:
 		vel.y -= jumpSpeed

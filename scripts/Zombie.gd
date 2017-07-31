@@ -31,6 +31,10 @@ func _ready():
 	floorRayR.add_exception(self)
 	walkForwardRay.add_exception(self)
 	connect("dead",self,"_on_dead")
+	connect("hurt",self,"_on_hurt")
+
+func _on_hurt():
+	sfx.play("ZombieHurt")
 
 func _on_change_facingRight_ui(val):
 	facingRight = val

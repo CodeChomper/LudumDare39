@@ -82,7 +82,7 @@ samples/GunShort = {
 "sample": ExtResource( 23 )
 }
 samples/PlayerHurt = {
-"db": -6.0,
+"db": 0.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 24 )
@@ -204,7 +204,7 @@ autostart = false
 
 frames = SubResource( 3 )
 animation = "shoot"
-frame = 2
+frame = 1
 playing = true
 __meta__ = {
 "_edit_lock_": true

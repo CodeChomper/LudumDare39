@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://scripts/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://imgs/ZombieIdle_0.png" type="Texture" id=2]
@@ -13,7 +13,8 @@
 [ext_resource path="res://imgs/ZombieWalk_6.png" type="Texture" id=11]
 [ext_resource path="res://imgs/Zombie_2.png" type="Texture" id=12]
 [ext_resource path="res://imgs/GlowingEyesMask.png" type="Texture" id=13]
-[ext_resource path="res://sounds/ZombieRoam.smp" type="Sample" id=14]
+[ext_resource path="res://sounds/ZombieHurt.smp" type="Sample" id=14]
+[ext_resource path="res://sounds/ZombieRoam.smp" type="Sample" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -56,11 +57,17 @@ animations = [ {
 
 [sub_resource type="SampleLibrary" id=5]
 
+samples/ZombieHurt = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 14 )
+}
 samples/ZombieRoam = {
 "db": -10.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 14 )
+"sample": ExtResource( 15 )
 }
 
 [node name="Zombie" type="KinematicBody2D" groups=[
@@ -164,7 +171,7 @@ autostart = false
 
 frames = SubResource( 4 )
 animation = "run"
-frame = 7
+frame = 1
 playing = true
 
 [node name="DecayTimer" type="Timer" parent="."]
