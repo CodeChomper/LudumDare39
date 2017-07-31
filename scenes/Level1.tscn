@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://imgs/BG.png" type="Texture" id=1]
 [ext_resource path="res://scenes/deco/Building1.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/Zombie.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/deco/PoliceCar.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/ZGETut.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -180,5 +181,11 @@ transform/pos = Vector2( 430.481, 495.579 )
 [node name="PoliceCar" parent="." instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2254.83, 355.614 )
+
+[node name="ZGETut" parent="." instance=ExtResource( 18 )]
+
+[node name="ZGETut 2" parent="." instance=ExtResource( 18 )]
+
+transform/pos = Vector2( 2524.33, 338.525 )
 
 

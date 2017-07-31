@@ -79,7 +79,6 @@ transform/pos = Vector2( 871.643, 359.021 )
 transform/scale = Vector2( -5, 5 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
 playing = true
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
