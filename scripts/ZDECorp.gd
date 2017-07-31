@@ -3,7 +3,7 @@ onready var levelSwitchTimer = get_node("LevelSwitchTimer")
 onready var anim = get_node("AnimationPlayer")
 export(float) var power = 100.0 setget _on_power_changed_ui
 func _ready():
-
+	main.power = 100.0
 	pass
 
 func _on_power_changed_ui(val):

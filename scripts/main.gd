@@ -1,5 +1,5 @@
 extends Node
-var levels = ["res://scenes/Menu.tscn","res://scenes/Level1.tscn","res://scenes/EndScene.tscn"]
+var levels = ["res://scenes/Menu.tscn","res://scenes/Level1.tscn","res://scenes/Level2.tscn","res://scenes/EndScene.tscn"]
 var curLevel = 0
 var GRAVITY = 500
 var backpack = 0

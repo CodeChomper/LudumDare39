@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://tiles/LevelTiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/deco/Window1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/deco/Window2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/deco/Door.tscn" type="PackedScene" id=4]
+
+[node name="Building1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1, 4, -65536, 1, -65535, 1, -65534, 1, -65533, 1, -65532, 1, -65531, 1, -65530, 1, -65529, 1, -65528, 1, -65527, 1, -65526, 1, -65525, 1, -65524, 536870916, 65535, 2, 0, 5, 1, 5, 2, 5, 3, 5, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 536870914, 131071, 2, 65536, 5, 65537, 5, 65538, 5, 65539, 5, 65540, 5, 65541, 5, 65542, 5, 65543, 5, 65544, 5, 65545, 5, 65546, 5, 65547, 5, 65548, 536870914, 196607, 2, 131072, 5, 131073, 5, 131074, 5, 131075, 5, 131076, 5, 131077, 5, 131078, 5, 131079, 5, 131080, 5, 131081, 5, 131082, 5, 131083, 5, 131084, 536870914, 262143, 2, 196608, 5, 196609, 5, 196610, 5, 196611, 5, 196612, 5, 196613, 5, 196614, 5, 196615, 5, 196616, 5, 196617, 5, 196618, 5, 196619, 5, 196620, 536870914, 327679, 2, 262144, 5, 262145, 5, 262146, 5, 262147, 5, 262148, 5, 262149, 5, 262150, 5, 262151, 5, 262152, 5, 262153, 5, 262154, 5, 262155, 5, 262156, 536870914, 393215, 2, 327680, 5, 327681, 5, 327682, 5, 327683, 5, 327684, 5, 327685, 5, 327686, 5, 327687, 5, 327688, 5, 327689, 5, 327690, 5, 327691, 5, 327692, 536870914 )
+
+[node name="Window" parent="TileMap" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 62.3678, 55.7142 )
+transform/scale = Vector2( 2, 2 )
+
+[node name="Window" parent="TileMap/Window" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 76.1167, -3.8147e-06 )
+
+[node name="Door" parent="TileMap" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 307.634, 141.26 )
+modulate = Color( 0.679688, 0.00531006, 0.00531006, 1 )
+
+

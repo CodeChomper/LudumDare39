@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scripts/EndScene.gd" type="Script" id=1]
 [ext_resource path="res://imgs/lightMask.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/StreetLamp.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Zombie.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/deco/PoliceCar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://imgs/gameOver.png" type="Texture" id=9]
 
 [node name="EndScene" type="Node2D"]
 
@@ -91,6 +92,12 @@ process_mode = 1
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="gameOver" type="Sprite" parent="."]
+
+visibility/light_mask = 1024
+transform/pos = Vector2( 523.634, 237.686 )
+texture = ExtResource( 9 )
 
 [connection signal="timeout" from="ResetTimer" to="." method="_on_ResetTimer_timeout"]
 

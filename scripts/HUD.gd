@@ -6,9 +6,11 @@ onready var heart2 = get_node("CanvasLayer/Heart2")
 onready var heart3 = get_node("CanvasLayer/Heart3")
 onready var heart4 = get_node("CanvasLayer/Heart4")
 onready var heart5 = get_node("CanvasLayer/Heart5")
+onready var canvas = get_node("CanvasLayer")
 
 func _ready():
 	set_process(true)
+	canvas.set_offset(Vector2(0,0))
 	pass
 
 func _process(delta):
