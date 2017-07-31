@@ -1,8 +1,24 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://imgs/HeartEmpty.png" type="Texture" id=2]
+[ext_resource path="res://imgs/HeartFull.png" type="Texture" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "empty",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "full",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=1]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -15,7 +31,7 @@ border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -39,17 +55,52 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
+[node name="Heart1" type="AnimatedSprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 748.832, 567.526 )
+frames = SubResource( 3 )
+animation = "full"
+playing = true
+
+[node name="Heart2" type="AnimatedSprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 799.086, 567.526 )
+frames = SubResource( 3 )
+animation = "full"
+playing = true
+
+[node name="Heart3" type="AnimatedSprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 849.339, 567.526 )
+frames = SubResource( 3 )
+animation = "full"
+playing = true
+
+[node name="Heart4" type="AnimatedSprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 896.891, 567.526 )
+frames = SubResource( 3 )
+animation = "full"
+playing = true
+
+[node name="Heart5" type="AnimatedSprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 942.821, 567.526 )
+frames = SubResource( 3 )
+animation = "full"
+playing = true
+
 [node name="PanelBG" type="Panel" parent="CanvasLayer"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 139.0
-margin/top = 4.0
-margin/right = 639.0
-margin/bottom = 24.0
-custom_styles/panel = SubResource( 2 )
+margin/left = 137.0
+margin/top = 561.0
+margin/right = 637.0
+margin/bottom = 581.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="PanelFG" type="Panel" parent="CanvasLayer"]
 
@@ -57,11 +108,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 139.0
-margin/top = 4.0
-margin/right = 639.0
-margin/bottom = 24.0
-custom_styles/panel = SubResource( 1 )
+margin/left = 137.0
+margin/top = 561.0
+margin/right = 637.0
+margin/bottom = 581.0
+custom_styles/panel = SubResource( 2 )
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 
@@ -69,10 +120,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 18.0
-margin/top = 7.0
-margin/right = 127.0
-margin/bottom = 21.0
+margin/left = 16.0
+margin/top = 564.0
+margin/right = 125.0
+margin/bottom = 578.0
 text = "City Power Level:"
 percent_visible = 1.0
 lines_skipped = 0

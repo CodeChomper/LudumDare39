@@ -65,6 +65,7 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+facingRight = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -153,7 +154,7 @@ autostart = false
 
 frames = SubResource( 4 )
 animation = "run"
-frame = 4
+frame = 2
 playing = true
 
 [node name="DecayTimer" type="Timer" parent="."]

@@ -9,6 +9,9 @@ onready var anim = get_node("AnimatedSprite")
 onready var muzzelFlash = get_node("BulletSpawn/MuzzelFlash")
 onready var light = get_node("Camera2D/Light2D")
 onready var muzzelFlashLight = get_node("BulletSpawn/MuzzelFlash/MuzzelFlashLight")
+onready var forwardRay = get_node("ForwardRay")
+onready var backRay = get_node("BackRay")
+onready var invincibleTimer = get_node("InvincibleTimer")
 
 var DRAG = 0.92
 var GUN_KICK = 200
@@ -25,6 +28,7 @@ var right = false
 var shoot = false
 var canShoot = true
 var facingRight = true
+var invincible = false
 
 func _ready():
 	set_fixed_process(true)
@@ -48,6 +52,9 @@ func _fixed_process(delta):
 	if not onGround and vel.y > 0:
 		state = "jumpDown"
 	
+	checkHitZombie(forwardRay)
+	checkHitZombie(backRay)
+	
 	if shoot and canShoot and onGround:
 		shoot()
 	
@@ -57,6 +64,15 @@ func _fixed_process(delta):
 	# handle movement
 	movement(delta)
 
+
+func checkHitZombie(ray):
+	if ray.is_colliding() and not invincible:
+		if ray.get_collider() != null and ray.get_collider().is_in_group("badGuys"):
+			invincible = true
+			invincibleTimer.start()
+			main.playerHealth -= 10
+			print("ouch : " + str(main.playerHealth))
+	
 
 func updateAnimations():
 	anim.play(state)
@@ -117,4 +133,9 @@ func _on_MuzzelFlash_finished():
 	muzzelFlash.play("default")
 	muzzelFlashLight.set_hidden(true)
 	
+	pass # replace with function body
+
+
+func _on_InvincibleTimer_timeout():
+	invincible = false
 	pass # replace with function body

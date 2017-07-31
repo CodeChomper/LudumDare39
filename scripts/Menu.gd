@@ -1,6 +1,9 @@
 extends Node2D
+onready var btn = get_node("TextureButton")
 
 func _ready():
+	main.playerHealth = 100.0
+	btn.grab_focus()
 	pass
 
 

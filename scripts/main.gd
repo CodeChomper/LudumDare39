@@ -1,10 +1,11 @@
 extends Node
-var levels = ["res://scenes/Menu.tscn","res://scenes/Level1.tscn"]
+var levels = ["res://scenes/Menu.tscn","res://scenes/Level1.tscn","res://scenes/EndScene.tscn"]
 var curLevel = 0
 var GRAVITY = 500
 var backpack = 0
 var MAX_BACKPACK = 6
 var power = 100.0
+var playerHealth = 100.0
 
 var levelTimer
 
@@ -14,7 +15,20 @@ func _ready():
 	levelTimer.set_wait_time(0.5)
 	levelTimer.connect("timeout",self,"_on_level_tick")
 	add_child(levelTimer)
+	set_process(true)
 	pass
+
+func increasePlayerHealth(val):
+	playerHealth += val
+	if playerHealth > 100.0:
+		playerHealth = 100.0
+
+#check for end of game
+func _process(delta):
+	if playerHealth <= 0 or power <= 0:
+		playerHealth = 100.0
+		power = 100.0
+		get_tree().change_scene("res://scenes/EndScene.tscn")
 
 func getNextLevel():
 	curLevel += 1

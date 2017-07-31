@@ -14,7 +14,7 @@ onready var eye2 = get_node("Light2D1")
 var DRAG = 0.92
 var walkSpeed = 8.0
 var onGround = false
-var facingRight = true
+export (bool) var facingRight = true setget _on_change_facingRight_ui
 var vel = Vector2(0,0)
 
 func _ready():
@@ -24,8 +24,9 @@ func _ready():
 	floorRayR.add_exception(self)
 	walkForwardRay.add_exception(self)
 	connect("dead",self,"_on_dead")
-	
-	pass
+
+func _on_change_facingRight_ui(val):
+	facingRight = val
 
 func _fixed_process(delta):
 	if get_pos().y > 10000:
