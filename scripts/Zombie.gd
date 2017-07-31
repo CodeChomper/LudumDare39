@@ -6,6 +6,11 @@ onready var idleTimer = get_node("IdleTimer")
 onready var walkForwardRay = get_node("WalkForwardRay")
 onready var attackCooldown = get_node("AttackCooldown")
 onready var guts = preload("res://scenes/ZombieGuts.tscn")
+onready var zgHead = preload("res://scenes/ZGHead.tscn")
+onready var zgChest = preload("res://scenes/ZGChest.tscn")
+onready var zgPelvus = preload("res://scenes/ZGPelvus.tscn")
+onready var zgArm = preload("res://scenes/ZGArm.tscn")
+onready var zgLeg = preload("res://scenes/ZGLeg.tscn")
 onready var anim = get_node("AnimatedSprite")
 onready var decayTimer = get_node("DecayTimer")
 onready var eye1 = get_node("Light2D")
@@ -105,10 +110,32 @@ func _on_dead():
 	decayTimer.start()
 	clear_shapes()
 	for i in range(0,rand_range(2,6)):
-		var g = guts.instance()
-		g.set_linear_velocity(Vector2(rand_range(-300,300),rand_range(-50,-300)))
-		g.set_global_pos(get_global_pos())
-		self.get_parent().add_child(g)
+		if i == 1:
+			var g = zgHead.instance()
+			g.set_linear_velocity(Vector2(rand_range(-300,300),rand_range(-50,-300)))
+			g.set_global_pos(get_global_pos())
+			self.get_parent().add_child(g)
+		if i == 2:
+			var g = zgChest.instance()
+			g.set_linear_velocity(Vector2(rand_range(-300,300),rand_range(-50,-300)))
+			g.set_global_pos(get_global_pos())
+			self.get_parent().add_child(g)
+		if i == 3:
+			var g = zgPelvus.instance()
+			g.set_linear_velocity(Vector2(rand_range(-300,300),rand_range(-50,-300)))
+			g.set_global_pos(get_global_pos())
+			self.get_parent().add_child(g)
+		if i == 4:
+			var g = zgLeg.instance()
+			g.set_linear_velocity(Vector2(rand_range(-300,300),rand_range(-50,-300)))
+			g.set_global_pos(get_global_pos())
+			self.get_parent().add_child(g)
+		if i == 5:
+			var g = zgArm.instance()
+			g.set_linear_velocity(Vector2(rand_range(-300,300),rand_range(-50,-300)))
+			g.set_global_pos(get_global_pos())
+			self.get_parent().add_child(g)
+		
 	
 	print("i am dead")
 
