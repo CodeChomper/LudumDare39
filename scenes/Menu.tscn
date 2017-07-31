@@ -71,7 +71,6 @@ transform/pos = Vector2( 121.59, 355.32 )
 transform/scale = Vector2( 5, 5 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -80,6 +79,7 @@ transform/pos = Vector2( 871.643, 359.021 )
 transform/scale = Vector2( -5, 5 )
 frames = SubResource( 2 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]

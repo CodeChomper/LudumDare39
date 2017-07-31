@@ -6,6 +6,7 @@ func _ready():
 	main.playerHealth = 100.0
 	btn.grab_focus()
 	streamPlayer.play(0.0)
+	main.backpack = 0
 	pass
 
 
