@@ -23,6 +23,7 @@ func checkAllZGEs():
 		print(str(zge.fillPercent))
 		if zge.fillPercent < 1.0:
 			return false
+	main.backpack = 0
 	return true
 
 func _on_LevelSwitchTimer_timeout():

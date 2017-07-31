@@ -164,7 +164,7 @@ autostart = false
 
 frames = SubResource( 4 )
 animation = "run"
-frame = 6
+frame = 7
 playing = true
 
 [node name="DecayTimer" type="Timer" parent="."]

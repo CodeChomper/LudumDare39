@@ -25,6 +25,10 @@ func increasePlayerHealth(val):
 
 #check for end of game
 func _process(delta):
+	#TODO remove for production
+	if Input.is_action_pressed("timerStart"):
+		levelTimer.start()
+	
 	if playerHealth <= 0 or power <= 0:
 		playerHealth = 100.0
 		power = 100.0

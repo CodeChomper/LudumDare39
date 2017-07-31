@@ -12,6 +12,7 @@ onready var muzzelFlashLight = get_node("BulletSpawn/MuzzelFlash/MuzzelFlashLigh
 onready var forwardRay = get_node("ForwardRay")
 onready var backRay = get_node("BackRay")
 onready var invincibleTimer = get_node("InvincibleTimer")
+onready var sfx = get_node("SFX")
 
 var DRAG = 0.92
 var GUN_KICK = 200
@@ -68,6 +69,7 @@ func _fixed_process(delta):
 func checkHitZombie(ray):
 	if ray.is_colliding() and not invincible:
 		if ray.get_collider() != null and ray.get_collider().is_in_group("badGuys"):
+			sfx.play('PlayerHurt')
 			invincible = true
 			invincibleTimer.start()
 			main.playerHealth -= 10
@@ -113,6 +115,7 @@ func _on_ShotCoolDown_timeout():
 		state = 'idle'
 
 func shoot():
+	sfx.play("GunShort")
 	muzzelFlashLight.set_hidden(false)
 	muzzelFlash.set_frame(0)
 	muzzelFlash.play("shoot")

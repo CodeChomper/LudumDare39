@@ -48,7 +48,7 @@ func _fixed_process(delta):
 	onGround = floorRayL.is_colliding() or floorRayR.is_colliding()
 	
 	#turn around of no floor infront of you
-	if not state == 'attack' and not walkForwardRay.is_colliding():
+	if not state == 'attack' and not walkForwardRay.is_colliding() and onGround:
 		_turn_around()
 	
 	#handle movement via states
