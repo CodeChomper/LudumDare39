@@ -163,7 +163,7 @@ transform/pos = Vector2( 1369.26, 518.158 )
 
 [node name="ZGEDropOff 2" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 2526.56, 349.342 )
+transform/pos = Vector2( 2525.77, 351.866 )
 gutsNeeded = 5.0
 
 [node name="HealthPickup" parent="." instance=ExtResource( 14 )]
