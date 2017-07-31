@@ -20,8 +20,8 @@
 [ext_resource path="res://imgs/PlayerShoot_0.png" type="Texture" id=18]
 [ext_resource path="res://imgs/PlayerShoot_1.png" type="Texture" id=19]
 [ext_resource path="res://imgs/PlayerShoot_2.png" type="Texture" id=20]
-[ext_resource path="res://imgs/PlayerJump_1.png" type="Texture" id=21]
-[ext_resource path="res://imgs/PlayerJump_0.png" type="Texture" id=22]
+[ext_resource path="res://imgs/PlayerJump_0.png" type="Texture" id=21]
+[ext_resource path="res://imgs/PlayerJump_1.png" type="Texture" id=22]
 [ext_resource path="res://sounds/GunShort.smp" type="Sample" id=23]
 [ext_resource path="res://sounds/PlayerHurt.smp" type="Sample" id=24]
 
@@ -64,12 +64,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 21 ) ],
 "loop": true,
-"name": "jumpDown",
+"name": "jumpUp",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
-"name": "jumpUp",
+"name": "jumpDown",
 "speed": 5.0
 } ]
 
@@ -82,7 +82,7 @@ samples/GunShort = {
 "sample": ExtResource( 23 )
 }
 samples/PlayerHurt = {
-"db": 0.0,
+"db": -5.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 24 )
@@ -204,7 +204,7 @@ autostart = false
 
 frames = SubResource( 3 )
 animation = "shoot"
-frame = 1
+frame = 4
 playing = true
 __meta__ = {
 "_edit_lock_": true

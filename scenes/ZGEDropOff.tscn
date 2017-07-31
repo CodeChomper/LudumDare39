@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scripts/PowerStationDropoff.gd" type="Script" id=1]
 [ext_resource path="res://imgs/ZGEStation_0.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://imgs/ZGEStation_4.png" type="Texture" id=6]
 [ext_resource path="res://imgs/ZGEStation_5.png" type="Texture" id=7]
 [ext_resource path="res://imgs/StreetLamp_1.png" type="Texture" id=8]
+[ext_resource path="res://sounds/GutsDropOff.smp" type="Sample" id=9]
+[ext_resource path="res://sounds/ZGEFull.smp" type="Sample" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -22,6 +24,21 @@ animations = [ {
 "name": "main",
 "speed": 5.0
 } ]
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/GutsDropOff = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/ZGEFull = {
+"db": 5.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
+}
 
 [node name="ZGEDropOff" type="Node2D" groups=[
 "level",
@@ -76,6 +93,17 @@ shadow/color = Color( 0, 0, 0, 0 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
+
+[node name="SFX" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 3 )
+config/pitch_random = 0.0
 
 [connection signal="body_enter" from="Area2D" to="." method="_on_Area2D_body_enter"]
 

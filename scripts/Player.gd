@@ -51,7 +51,7 @@ func _fixed_process(delta):
 	
 	if state != "run" and footStepsPlaying:
 		footStepsPlaying = false
-		#sfx.stop_voice(footStepsSoundId)
+		sfx.stop_voice(footStepsSoundId)
 	
 	onGround = (floorRayL.is_colliding() or floorRayR.is_colliding()) 
 	if not onGround and vel.y <= 0:
@@ -97,7 +97,7 @@ func movement(delta):
 			state = "run"
 			if not footStepsPlaying:
 				footStepsPlaying = true
-				#footStepsSoundId = sfx.play("FootSteps")
+				footStepsSoundId = sfx.play("FootSteps")
 	
 	if right and not left and state != "shoot":
 		main.flip(self,false)
@@ -107,7 +107,7 @@ func movement(delta):
 			state = "run"
 			if not footStepsPlaying:
 				footStepsPlaying = true
-				#SfootStepsSoundId = sfx.play("FootSteps")
+				footStepsSoundId = sfx.play("FootSteps")
 	
 	if onGround and up:
 		vel.y -= jumpSpeed

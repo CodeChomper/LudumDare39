@@ -3,7 +3,7 @@ extends Node2D
 export (float) var gutsNeeded = 20.0 setget _on_gutsNeeded_changed
 
 onready var sprite = get_node("Sprite")
-
+onready var sfx = get_node("SFX")
 var gutsContained = 0.0
 var fillPercent = 0.0
 var led = 0
@@ -20,8 +20,13 @@ func _ready():
 
 func _on_Area2D_body_enter( body ):
 	if body.get_name() == "Player" and led < 6:
-		gutsContained += main.dropOffGuts()
+		var gutCount = main.dropOffGuts()
+		if gutCount > 0:
+			sfx.play("GutsDropOff")
+			gutsContained += gutCount
 		updateLeds()
+		if led > 5:
+			sfx.play("ZGEFull")
 	pass # replace with function body
 
 func updateLeds():
