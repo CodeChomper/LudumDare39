@@ -19,7 +19,7 @@ func _ready():
 
 
 func _on_Area2D_body_enter( body ):
-	if body.get_name() == "Player":
+	if body.get_name() == "Player" and fillPercent < 100.0:
 		gutsContained += main.dropOffGuts()
 		updateLeds()
 	pass # replace with function body

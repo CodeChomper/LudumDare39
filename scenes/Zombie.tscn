@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://scripts/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://imgs/ZombieIdle_0.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://imgs/ZombieWalk_6.png" type="Texture" id=11]
 [ext_resource path="res://imgs/Zombie_2.png" type="Texture" id=12]
 [ext_resource path="res://imgs/GlowingEyesMask.png" type="Texture" id=13]
+[ext_resource path="res://sounds/ZombieRoam.smp" type="Sample" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -39,19 +40,28 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "attack",
-"speed": 16.0
+"name": "run",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "run",
-"speed": 8.0
+"name": "attack",
+"speed": 16.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "dead",
 "speed": 5.0
 } ]
+
+[sub_resource type="SampleLibrary" id=5]
+
+samples/ZombieRoam = {
+"db": -10.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 14 )
+}
 
 [node name="Zombie" type="KinematicBody2D" groups=[
 "badGuys",
@@ -154,7 +164,7 @@ autostart = false
 
 frames = SubResource( 4 )
 animation = "run"
-frame = 2
+frame = 5
 playing = true
 
 [node name="DecayTimer" type="Timer" parent="."]
@@ -214,6 +224,24 @@ shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
 
+[node name="SFX" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 4
+config/samples = SubResource( 5 )
+config/pitch_random = 0.0
+
+[node name="RoamSoundTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_time_out"]
 
 [connection signal="body_enter" from="FrontCollision" to="." method="_on_FrontCollision_body_enter"]
@@ -225,5 +253,7 @@ shadow/item_mask = 1
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
 
 [connection signal="timeout" from="DecayTimer" to="." method="_on_DecayTimer_timeout"]
+
+[connection signal="timeout" from="RoamSoundTimer" to="." method="_on_RoamSoundTimer_timeout"]
 
 

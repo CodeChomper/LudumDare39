@@ -3,28 +3,28 @@
 [ext_resource path="res://scripts/ZombieGuts.gd" type="Script" id=1]
 [ext_resource path="res://imgs/zpLeg.png" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 2.22879, 15.8476, 7.92462, 19.2651, -6.03017, 20.4043 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 2.22879, 15.8476, -6.03017, 20.4043, -7.31173, -12.6316, -1.75829, -12.9164 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 15.7942
+radius = 21.2042
 
 [node name="ZombieGuts" type="RigidBody2D"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.463928, -1.90735e-06 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 4 )
+shapes/1/shape = SubResource( 2 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0.463928, -1.90735e-06 )
 shapes/1/trigger = false
 collision/layers = 1
@@ -61,8 +61,8 @@ trigger = false
 [node name="Area2D" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.28479, 3.13271 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -71,7 +71,8 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-shape = SubResource( 2 )
+transform/pos = Vector2( 0.28479, 3.13271 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 

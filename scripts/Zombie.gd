@@ -15,6 +15,8 @@ onready var anim = get_node("AnimatedSprite")
 onready var decayTimer = get_node("DecayTimer")
 onready var eye1 = get_node("Light2D")
 onready var eye2 = get_node("Light2D1")
+onready var sfx = get_node("SFX")
+onready var roamSFXTimer = get_node("RoamSoundTimer")
 
 var DRAG = 0.92
 var walkSpeed = 8.0
@@ -142,4 +144,13 @@ func _on_dead():
 func _on_DecayTimer_timeout():
 	print("decay")
 	queue_free()
+	pass # replace with function body
+
+
+func _on_RoamSoundTimer_timeout():
+	if state == "run":
+		sfx.play("ZombieRoam")
+		roamSFXTimer.set_wait_time(rand_range(2,9))
+		roamSFXTimer.start()
+	
 	pass # replace with function body
